@@ -11,7 +11,7 @@ async function validateAuth(req, res, next) {
     const token = authorization.split(' ')[1];
 
     try {
-        const { _id } = jwt.verify(token, process.env.SECRET);
+        const { id: _id } = jwt.verify(token, process.env.SECRET);
         req.user = await User.findById(_id);
         next();
     } catch (error) {
